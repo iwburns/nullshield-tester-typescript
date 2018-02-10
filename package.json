@@ -1,0 +1,15 @@
+{
+  "name": "nullshield-tester-typescript",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.ts",
+  "types": "main.d.ts",
+  "scripts": {
+    "start": "tsc && node ./dist/main.js"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "nullshield": "^0.4.0"
+  }
+}
