@@ -26,9 +26,10 @@ promiseMe("promise test")
     console.log("expect some", maybePromise.isSome(), maybePromise.unwrap())
   })
 
-async function asyncAwaitTest () {
+async function asyncAwaitTest (): Promise<OptT<string>> {
   const maybeAsyncAwait = await promiseMe("async/await");
   console.log("async await expect some", maybeAsyncAwait.isSome(), maybeAsyncAwait.unwrap())  
+  return maybeAsyncAwait;
 }
 
 asyncAwaitTest()
