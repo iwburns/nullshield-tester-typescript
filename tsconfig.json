@@ -5,7 +5,7 @@
     "strictNullChecks": true,
     "module": "umd",
     "moduleResolution": "node",
-    "target": "es2017",
+    "target": "es6",
     "jsx": "react",
     "declaration": true
   },
