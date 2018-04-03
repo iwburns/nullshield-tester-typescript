@@ -1,4 +1,5 @@
-import OptionT from "nullshield";
+import { OptionT } from 'nullshield';
+
 
 const one = OptionT.some(1);
 
@@ -13,6 +14,13 @@ function printOption(a: OptionT<number>) {
 
 printOption(one);
 
+function getOptionT(a: any): OptionT<number> {
+  return OptionT.of(a);
+}
+
+printOption(getOptionT('5'));
+printOption(getOptionT('testtest'));
+printOption(getOptionT(null));
 
 function promiseMe (x: string): Promise<OptionT<string>> {
   return new Promise(function(resolve, reject) {
