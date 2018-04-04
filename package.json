@@ -10,6 +10,6 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "nullshield": "latest"
+    "nullshield": "^0.7.0"
   }
 }
