@@ -16,12 +16,6 @@ function promiseOpt(x: string): Promise<OptionT<string>> {
   });
 }
 
-function promiseMe (x: string): Promise<OptionT<string>> {
-  return new Promise(function(resolve, reject) {
-    return resolve(OptionT.some(x));
-  });
-}
-
 function basic() {
   console.log('==== basic usage ====');
   const one = OptionT.some(1);
