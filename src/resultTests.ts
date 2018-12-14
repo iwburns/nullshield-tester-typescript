@@ -1,6 +1,6 @@
-import { ResultT } from 'nullshield';
+import { Result } from '@iwburns/tupperware';
 
-function printResult<T, E>(res: ResultT<T, E>) {
+function printResult<T, E>(res: Result<T, E>) {
   if (res.isOk()) {
     console.log(res.unwrap());
   } else {
@@ -8,19 +8,19 @@ function printResult<T, E>(res: ResultT<T, E>) {
   }
 }
 
-function getResult<T, E>(a: T): ResultT<T, E> {
-  return ResultT.ok(a);
+function getResult<T, E>(a: T): Result<T, E> {
+  return Result.ok(a);
 }
 
-function promiseResult(x: string): Promise<ResultT<string, string>> {
+function promiseResult(x: string): Promise<Result<string, string>> {
   return new Promise((resolve) => {
-    resolve(ResultT.ok(x));
+    resolve(Result.ok(x));
   });
 }
 
 function basic() {
   console.log('==== basic usage ====');
-  const one = ResultT.ok(1);
+  const one = Result.ok(1);
   console.log(one.isOk());
   const two = one.map(x => x * 2);
   console.log(two.isOk());
@@ -30,8 +30,8 @@ function basic() {
 
 function asArgument() {
   console.log('==== as an arguments ====');
-  const one = ResultT.ok(1);
-  const nope = ResultT.err('it broke');
+  const one = Result.ok(1);
+  const nope = Result.err('it broke');
   printResult(one);
   printResult(nope);
   console.log('==== end as an arguments ====');
@@ -61,7 +61,3 @@ export function run() {
   asReturn();
   inPromise();
 }
-
-export default {
-  run,
-};

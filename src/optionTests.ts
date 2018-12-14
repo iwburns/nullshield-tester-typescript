@@ -1,24 +1,24 @@
-import { OptionT } from 'nullshield';
+import { Optional } from '@iwburns/tupperware';
 
-function printOption<T>(opt: OptionT<T>) {
+function printOption<T>(opt: Optional<T>) {
   if (opt.isSome()) {
     console.log(opt.unwrap());
   }
 }
 
-function getOptionT<T>(a: T): OptionT<T> {
-  return OptionT.of(a);
+function getOptional<T>(a: T): Optional<T> {
+  return Optional.of(a);
 }
 
-function promiseOpt(x: string): Promise<OptionT<string>> {
+function promiseOpt(x: string): Promise<Optional<string>> {
   return new Promise((resolve) => {
-    resolve(OptionT.some(x));
+    resolve(Optional.some(x));
   });
 }
 
 function basic() {
   console.log('==== basic usage ====');
-  const one = OptionT.some(1);
+  const one = Optional.some(1);
   console.log(one.isSome());
   const two = one.map(x => x * 2);
   console.log(two.isSome());
@@ -28,8 +28,8 @@ function basic() {
 
 function asArgument() {
   console.log('==== as an arguments ====');
-  const one = OptionT.some(1);
-  const nope = OptionT.none();
+  const one = Optional.some(1);
+  const nope = Optional.none();
   printOption(one);
   printOption(nope);
   console.log('==== end as an arguments ====');
@@ -37,9 +37,9 @@ function asArgument() {
 
 function asReturn() {
   console.log('==== as a return value ====');
-  printOption(getOptionT(5));
-  printOption(getOptionT('testtest'));
-  printOption(getOptionT(null));
+  printOption(getOptional(5));
+  printOption(getOptional('testtest'));
+  printOption(getOptional(null));
   console.log('==== end as a return value ====');
 }
 
@@ -59,7 +59,3 @@ export function run() {
   asReturn();
   inPromise();
 }
-
-export default {
-  run,
-};
